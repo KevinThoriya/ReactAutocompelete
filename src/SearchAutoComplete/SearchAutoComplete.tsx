@@ -13,15 +13,17 @@ import useSearchingFactory from "./useSearchingFactory";
 import useSearchingStore from "./useSearchingStore";
 import useTextControl from "./useTextControl";
 
-type Props = {};
+export type SearchTerm = string;
+type Props = {
+  searchedTerms: SearchTerm[];
+  appendSearchTerm: (data: SearchTerm) => void;
+};
 
-const SearchAutoComplete = ({}: Props) => {
+const SearchAutoComplete = ({ searchedTerms, appendSearchTerm }: Props) => {
   const [isSelectionFocused, setIsSelectionFocus] = useState(false);
 
   const { controlledText, onChangeText, clearText, setControlledText } =
     useTextControl();
-
-  const { searchedTerms, appendSearchTerm } = useSearchingStore();
 
   const { filterTerms, onSelectOfOption, enterListener } = useSearchingFactory({
     controlledText,

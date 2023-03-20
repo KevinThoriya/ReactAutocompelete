@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react";
 
+import { SearchTerm } from "./SearchAutoComplete";
+
 type Prop = {
   controlledText: string;
   setControlledText: (text: string) => void;
-  searchedTerms: string[];
-  appendSearchTerm: (text: string) => void;
+  searchedTerms: SearchTerm[];
+  appendSearchTerm: (text: SearchTerm) => void;
   setIsSelectionFocus: (focus: boolean) => void;
 };
 

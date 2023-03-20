@@ -1,7 +1,9 @@
 import "./SelectionItem.css";
 
+import { SearchTerm } from "../SearchAutoComplete";
+
 type SuggestionItemProps = {
-  term: string;
+  term: SearchTerm;
   searchTerm: string;
   onSelect: () => void;
 };
