@@ -1,6 +1,6 @@
 import './App.css'
 
-import SearchAutoComplete from './SearchAutoComplete';
+import SearchAutoComplete from './component/SearchAutoComplete';
 
 function App() {
 

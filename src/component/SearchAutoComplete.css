@@ -1,0 +1,23 @@
+.selector-container {
+    border: 1px solid #ccc;
+    border-radius: 10px;   
+    padding: 10px;
+    width: min-content;
+    margin: 10px auto;
+}
+
+.selector-container input[type="text"] {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    font-size: large;
+    color: #fff;
+    line-height: 30px;
+    padding: 7px 7px 5px 7px;
+    min-width: max(200px, 40VW);
+    box-sizing: border-box;
+    transition: 0.5s;
+    outline: none;
+
+}
