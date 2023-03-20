@@ -1,0 +1,20 @@
+.optionItems {
+  background-color: var(--backgroundColor);
+  margin-top: 2px;
+  height: 40px;
+  line-height: 40px;
+  text-align: start;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.optionItems:hover {
+  border: 1px solid #fff;
+  transform: scale(1.02);
+}
+
+.highlight {
+  background-color: yellowgreen;
+  color: var(--primary);
+  font-weight: 600;
+}
