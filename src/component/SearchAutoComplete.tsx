@@ -8,28 +8,11 @@ import NoMatchFound from "./NoMatchFound";
 import Search from "../assets/Search.svg";
 import SuggestionItem from "./SuggestionItem";
 import Up from "../assets/up.svg";
+import useSearchingFactory from "./useSearchingFactory";
 import useTextControl from "./useTextControl";
 
 type Props = {};
 
-const useSearchingFactory = (controlledText: string) => {
-  const [searchedTerms, setSearchedTerms] = useState([
-    "Some Default",
-    "Search Terms",
-    "Are Added,",
-    "So Please Do",
-    "Experiment With IT.",
-  ]);
-
-  const filterTerms = useMemo(() => {
-    let lowerSearch = controlledText.toLowerCase();
-    return searchedTerms.filter((term) =>
-      term.toLowerCase().includes(lowerSearch)
-    );
-  }, [searchedTerms, controlledText]);
-
-  return { filterTerms };
-};
 const SearchAutoComplete = (props: Props) => {
   const { controlledText, onChangeText, clearText } = useTextControl();
   const { filterTerms } = useSearchingFactory(controlledText);

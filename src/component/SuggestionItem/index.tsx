@@ -1,4 +1,4 @@
-import "./SuggestionItem.css";
+import "./SelectionItem.css";
 
 type SuggestionItemProps = { term: string; searchTerm: string };
 const SuggestionItem = ({ term, searchTerm }: SuggestionItemProps) => {
