@@ -3,22 +3,16 @@ import { useMemo, useState } from "react";
 type Prop = {
   controlledText: string;
   setControlledText: (text: string) => void;
+  searchedTerms: string[];
   setIsSelectionFocus: (focus: boolean) => void;
 };
 
 const useSearchingFactory = ({
   controlledText,
   setControlledText,
+  searchedTerms,
   setIsSelectionFocus,
 }: Prop) => {
-  const [searchedTerms, setSearchedTerms] = useState<string[]>([
-    "Some Default",
-    "Search Terms",
-    "Are Added,",
-    "So Please Do",
-    "Experiment With IT.",
-  ]);
-
   const filterTerms = useMemo(() => {
     let lowerSearch = controlledText.toLowerCase();
     return searchedTerms.filter((term: string) =>

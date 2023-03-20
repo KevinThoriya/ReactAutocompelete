@@ -10,6 +10,7 @@ import SuggestionItem from "./SuggestionItem";
 import Up from "../assets/up.svg";
 import useOnClickOutside from "./useOnClickOutside";
 import useSearchingFactory from "./useSearchingFactory";
+import useSearchingStore from "./useSearchingStore";
 import useTextControl from "./useTextControl";
 
 type Props = {};
@@ -20,9 +21,12 @@ const SearchAutoComplete = ({}: Props) => {
   const { controlledText, onChangeText, clearText, setControlledText } =
     useTextControl();
 
+  const { searchedTerms } = useSearchingStore();
+
   const { filterTerms, onSelectOfOption } = useSearchingFactory({
     controlledText,
     setControlledText,
+    searchedTerms,
     setIsSelectionFocus,
   });
 
