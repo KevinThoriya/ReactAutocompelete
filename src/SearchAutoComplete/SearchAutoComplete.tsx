@@ -21,13 +21,14 @@ const SearchAutoComplete = ({}: Props) => {
   const { controlledText, onChangeText, clearText, setControlledText } =
     useTextControl();
 
-  const { searchedTerms } = useSearchingStore();
+  const { searchedTerms, appendSearchTerm } = useSearchingStore();
 
-  const { filterTerms, onSelectOfOption } = useSearchingFactory({
+  const { filterTerms, onSelectOfOption, enterListener } = useSearchingFactory({
     controlledText,
     setControlledText,
     searchedTerms,
     setIsSelectionFocus,
+    appendSearchTerm,
   });
 
   const selectorRef = useRef<HTMLDivElement>(null);
@@ -56,6 +57,7 @@ const SearchAutoComplete = ({}: Props) => {
             onChange={onChangeText}
             onFocus={() => setIsSelectionFocus(true)}
             autoComplete="off"
+            onKeyDown={enterListener}
             ref={inputRef}
           />
           {controlledText && (

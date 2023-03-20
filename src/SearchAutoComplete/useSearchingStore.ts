@@ -8,7 +8,11 @@ const useSearchingStore = () => {
     "So Please Do",
     "Experiment With IT.",
   ]);
-  return { searchedTerms };
+
+  const appendSearchTerm = (text: string) => {
+    setSearchedTerms([text, ...searchedTerms]);
+  };
+  return { searchedTerms, appendSearchTerm };
 };
 
 export default useSearchingStore;

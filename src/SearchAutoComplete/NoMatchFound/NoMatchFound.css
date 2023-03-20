@@ -3,3 +3,7 @@
   pointer-events: none;
   color: yellowgreen;
 }
+.hintText {
+  margin-right: 10px;
+  color: var(--primary);
+}
