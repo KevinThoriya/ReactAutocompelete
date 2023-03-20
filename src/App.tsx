@@ -1,11 +1,14 @@
 import './App.css'
 
+import SearchAutoComplete from './SearchAutoComplete';
+
 function App() {
 
 
   return (
     <div className="App">
-        Select AutoComplete 
+        <h1 className="headingText">Select AutoComplete </h1>
+        <SearchAutoComplete />
     </div>
   )
 }
