@@ -1,18 +1,18 @@
 import "./SearchAutoComplete.css";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import Cross from "../assets/close.svg";
 import Down from "../assets/down.svg";
 import NoMatchFound from "./NoMatchFound";
 import Search from "../assets/Search.svg";
 import SuggestionItem from "./SuggestionItem";
+import Up from "../assets/up.svg";
 import useTextControl from "./useTextControl";
 
 type Props = {};
 
-const SearchAutoComplete = (props: Props) => {
-  const { controlledText, onChangeText, clearText } = useTextControl();
+const useSearchingFactory = (controlledText: string) => {
   const [searchedTerms, setSearchedTerms] = useState([
     "Some Default",
     "Search Terms",
@@ -28,9 +28,13 @@ const SearchAutoComplete = (props: Props) => {
     );
   }, [searchedTerms, controlledText]);
 
+  return { filterTerms };
+};
+const SearchAutoComplete = (props: Props) => {
+  const { controlledText, onChangeText, clearText } = useTextControl();
+  const { filterTerms } = useSearchingFactory(controlledText);
   const [isSelectionFocused, setIsSelectionFocus] = useState(false);
-  const onFocus = () => setIsSelectionFocus(true);
-  const onBlur = () => setIsSelectionFocus(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div
@@ -50,9 +54,10 @@ const SearchAutoComplete = (props: Props) => {
             name="search"
             value={controlledText}
             onChange={onChangeText}
-            onFocus={onFocus}
-            onBlur={onBlur}
+            onFocus={() => setIsSelectionFocus(true)}
+            onBlur={() => setIsSelectionFocus(false)}
             autoComplete="off"
+            ref={inputRef}
           />
           {controlledText && (
             <div
@@ -63,7 +68,17 @@ const SearchAutoComplete = (props: Props) => {
               <img src={Cross} width={20} className="selector-closeIcon" />
             </div>
           )}
-          <img src={Down} width={20} className="selector-caretIcon" />
+          <div
+            role="button"
+            onClick={() => inputRef.current?.focus?.()}
+            className="selector-iconContainer"
+          >
+            <img
+              src={isSelectionFocused ? Up : Down}
+              width={20}
+              className="selector-caretIcon"
+            />
+          </div>
         </div>
         <div className="selector-options">
           {isSelectionFocused &&
