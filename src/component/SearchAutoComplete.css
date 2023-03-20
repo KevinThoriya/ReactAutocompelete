@@ -35,3 +35,7 @@
 .selector-closeIcon {
   margin-left: 15px;
 }
+
+.selector-iconContainer {
+  display: flex;
+}

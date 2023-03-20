@@ -8,7 +8,7 @@ import useTextControl from "./useTextControl";
 type Props = {};
 
 const SearchAutoComplete = (props: Props) => {
-  const [controlledText, onChangeText] = useTextControl();
+  const [controlledText, onChangeText, clearText] = useTextControl();
 
   return (
     <div className="selector-container">
@@ -19,7 +19,9 @@ const SearchAutoComplete = (props: Props) => {
         value={controlledText}
         onChange={onChangeText}
       />
-      <img src={Cross} width={20} className="selector-closeIcon" />
+      {controlledText && <div role="button" onClick={clearText} className="selector-iconContainer">
+        <img src={Cross} width={20} className="selector-closeIcon" />
+      </div>}
       <img src={Down} width={20} className="selector-caretIcon" />
     </div>
   );

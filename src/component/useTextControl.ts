@@ -6,7 +6,9 @@ const useTextControl = () => {
   const onChangeText = (e: ChangeEvent<HTMLInputElement>) => {
     setControlledText(e.target.value);
   };
-  return [controlledText, onChangeText, setControlledText] as const;
+
+  const clearText = () => setControlledText('');
+  return [controlledText, onChangeText, clearText, setControlledText] as const;
 };
 
 export default useTextControl;
