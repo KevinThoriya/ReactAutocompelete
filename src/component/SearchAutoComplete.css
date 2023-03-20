@@ -39,3 +39,7 @@
 .selector-iconContainer {
   display: flex;
 }
+
+.selector-focused {
+  border-color: var(--primary);
+}
