@@ -10,8 +10,8 @@ type Props = {};
 
 const SearchAutoComplete = (props: Props) => {
   const [controlledText, onChangeText, clearText] = useTextControl();
+  
   const [isSelectionFocused, setIsSelectionFocus] = useState(false);
-
   const onFocus = () => setIsSelectionFocus(true);
   const onBlur = () => setIsSelectionFocus(false);
 
