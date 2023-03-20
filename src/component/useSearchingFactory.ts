@@ -1,6 +1,16 @@
 import { useMemo, useState } from "react";
 
-const useSearchingFactory = (controlledText: string) => {
+type Prop = {
+  controlledText: string;
+  setControlledText: (text: string) => void;
+  setIsSelectionFocus: (focus: boolean) => void;
+};
+
+const useSearchingFactory = ({
+  controlledText,
+  setControlledText,
+  setIsSelectionFocus,
+}: Prop) => {
   const [searchedTerms, setSearchedTerms] = useState<string[]>([
     "Some Default",
     "Search Terms",
@@ -16,6 +26,11 @@ const useSearchingFactory = (controlledText: string) => {
     );
   }, [searchedTerms, controlledText]);
 
-  return { filterTerms };
+  const onSelectOfOption = (term: string) => {
+    setControlledText(term);
+    setIsSelectionFocus(false);
+  };
+
+  return { filterTerms, onSelectOfOption };
 };
 export default useSearchingFactory;

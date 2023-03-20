@@ -8,19 +8,32 @@ import NoMatchFound from "./NoMatchFound";
 import Search from "../assets/Search.svg";
 import SuggestionItem from "./SuggestionItem";
 import Up from "../assets/up.svg";
+import useOnClickOutside from "./useOnClickOutside";
 import useSearchingFactory from "./useSearchingFactory";
 import useTextControl from "./useTextControl";
 
 type Props = {};
 
-const SearchAutoComplete = (props: Props) => {
-  const { controlledText, onChangeText, clearText } = useTextControl();
-  const { filterTerms } = useSearchingFactory(controlledText);
+const SearchAutoComplete = ({}: Props) => {
   const [isSelectionFocused, setIsSelectionFocus] = useState(false);
+
+  const { controlledText, onChangeText, clearText, setControlledText } =
+    useTextControl();
+
+  const { filterTerms, onSelectOfOption } = useSearchingFactory({
+    controlledText,
+    setControlledText,
+    setIsSelectionFocus,
+  });
+
+  const selectorRef = useRef<HTMLDivElement>(null);
+  useOnClickOutside(selectorRef, () => setIsSelectionFocus(false));
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div
+      ref={selectorRef}
       className={`selector-main-container ${
         isSelectionFocused ? "selector-main-container-active" : ""
       }`}
@@ -38,7 +51,6 @@ const SearchAutoComplete = (props: Props) => {
             value={controlledText}
             onChange={onChangeText}
             onFocus={() => setIsSelectionFocus(true)}
-            onBlur={() => setIsSelectionFocus(false)}
             autoComplete="off"
             ref={inputRef}
           />
@@ -71,6 +83,7 @@ const SearchAutoComplete = (props: Props) => {
                   key={term}
                   term={term}
                   searchTerm={controlledText}
+                  onSelect={() => onSelectOfOption(term)}
                 />
               ))
             ) : (
