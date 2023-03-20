@@ -3,7 +3,7 @@
   border-radius: 10px;
   padding: 10px;
   width: min-content;
-  margin: 10px auto;
+  
   flex-direction: row;
   display: flex;
   min-width: max(200px, 40vw);
@@ -20,9 +20,21 @@
   padding: 7px 7px 5px 7px;
   width: 100%;
   flex: 1;
-  box-sizing: border-box;
+  box-sizing: content-box;
   transition: 0.5s;
   outline: none;
+}
+
+.selector-main-container {
+  width: 'fit-content';
+  margin: 10px auto;
+  width: min-content;
+  box-sizing: content-box;
+}
+.selector-main-container-active {
+  border: 1px solid var(--primary);
+  border-radius: 10px 10px 0px 0px ;
+  background-color: var(--primary);
 }
 
 .selector-searchIcon,
@@ -44,4 +56,5 @@
 
 .selector-focused {
   border-color: var(--primary);
+  background-color: var(--backgroundColor);
 }
