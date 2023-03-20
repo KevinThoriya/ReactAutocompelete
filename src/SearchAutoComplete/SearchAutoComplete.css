@@ -3,7 +3,7 @@
   border-radius: 10px;
   padding: 10px;
   width: min-content;
-  
+
   flex-direction: row;
   display: flex;
   min-width: max(200px, 40vw);
@@ -26,14 +26,14 @@
 }
 
 .selector-main-container {
-  width: 'fit-content';
+  width: "fit-content";
   margin: 10px auto;
   width: min-content;
   box-sizing: content-box;
 }
 .selector-main-container-active {
-  border: 1px solid var(--primary);
-  border-radius: 10px 10px 0px 0px ;
+  /* border: 1px solid var(--primary); */
+  border-radius: 10px 10px 0px 0px;
   background-color: var(--primary);
 }
 
@@ -57,4 +57,19 @@
 .selector-focused {
   border-color: var(--primary);
   background-color: var(--backgroundColor);
+}
+.selector-options {
+  width: 100%;
+  position: relative;
+}
+
+.selector-options-child {
+  position: absolute;
+    z-index: 9099;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 310px;
+  overflow-y: scroll;
 }

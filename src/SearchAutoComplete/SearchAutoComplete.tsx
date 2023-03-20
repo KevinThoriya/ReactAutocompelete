@@ -84,19 +84,22 @@ const SearchAutoComplete = ({ searchedTerms, appendSearchTerm }: Props) => {
           </div>
         </div>
         <div className="selector-options">
-          {isSelectionFocused &&
-            (filterTerms.length ? (
-              filterTerms.map((term) => (
-                <SuggestionItem
-                  key={term}
-                  term={term}
-                  searchTerm={controlledText}
-                  onSelect={() => onSelectOfOption(term)}
-                />
-              ))
-            ) : (
-              <NoMatchFound />
-            ))}
+          {isSelectionFocused && (
+            <div className="selector-options-child">
+              {filterTerms.length ? (
+                filterTerms.map((term) => (
+                  <SuggestionItem
+                    key={term}
+                    term={term}
+                    searchTerm={controlledText}
+                    onSelect={() => onSelectOfOption(term)}
+                  />
+                ))
+              ) : (
+                <NoMatchFound />
+              )}
+            </div>
+          )}
         </div>
       </>
     </div>
