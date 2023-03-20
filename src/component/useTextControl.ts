@@ -7,8 +7,8 @@ const useTextControl = () => {
     setControlledText(e.target.value);
   };
 
-  const clearText = () => setControlledText('');
-  return [controlledText, onChangeText, clearText, setControlledText] as const;
+  const clearText = () => setControlledText("");
+  return { controlledText, onChangeText, clearText, setControlledText };
 };
 
 export default useTextControl;
